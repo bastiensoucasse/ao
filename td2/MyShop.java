@@ -1,3 +1,4 @@
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -90,14 +91,20 @@ public class MyShop {
     /**
      * Adds a product to a stock by whith name and a quantity.
      * 
-     * @param stockName       the name of the stock to find.
-     * @param productName     the name of the product to add.
-     * @param productQuantity the quantity.
+     * @param stockName             the name of the stock to find.
+     * @param productName           the name of the product to add.
+     * @param productQuantity       the quantity.
+     * @param productType           the type (1 for food, 2 for hygiene)
+     * @param productExpirationDays number of days before product expires
      * @return {@code true} if the product has beend successfully added to the
      *         stock; {@code false} otherwise.
      */
-    public boolean addToStock(final String stockName, final String productName, final int productQuantity) {
-        return get(stockName).add(new Product(productName, productQuantity));
+    public boolean addToStock(final String stockName, final String productName, final int productQuantity,
+            final int productType, final int productExpirationDays) {
+        if (productType == 1)
+            return get(stockName).add(new Food(productName, productQuantity,
+                    new Date(new Date().getTime() + productExpirationDays * (long) 8.64e7)));
+        return get(stockName).add(new Hygiene(productName, productQuantity));
     }
 
     @Override

@@ -4,7 +4,7 @@
  * @author Iantsa Provost
  * @author Bastien Soucasse
  */
-public class Product {
+public abstract class Product {
     private static long n = 0;
 
     private final long id;

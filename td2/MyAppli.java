@@ -74,9 +74,22 @@ public class MyAppli {
         // Add products to the new stock by collecting their name and quantity
         System.out.println();
         System.out.println("Now, let's add some products! (Enter 'q' when done)");
+        int productType;
         String productName;
-        int productQuantity;
+        int productQuantity, productExpirationDays = -1;
         while (true) {
+            // TODO: Quit.
+
+            // Ask for the type
+            while (true) {
+                System.out.print("Type (1 for food and 2 for hygiene): ");
+                productType = Integer.parseInt(scanner.nextLine());
+                if (productType == 1 || productType == 2)
+                    break;
+                System.out.println("This product type is incorrect. Please try again.");
+            }
+
+            // Ask for the name
             while (true) {
                 System.out.print("Name: ");
                 productName = scanner.nextLine();
@@ -89,11 +102,22 @@ public class MyAppli {
             if (productName.trim().toLowerCase().equals("q"))
                 break;
 
+            if (productType == 1) {
+                while (true) {
+                    System.out.print("Days before expired: ");
+                    productExpirationDays = Integer.parseInt(scanner.nextLine());
+                    if (productExpirationDays > 0)
+                        break;
+                    System.out.println("This expiration date is invalid. Please choose another name.");
+                }
+            }
+
+            // Ask for the quantity
             System.out.print("Quantity: ");
             productQuantity = Integer.parseInt(scanner.nextLine());
 
             // Add the product to the stock
-            shop.addToStock(stockName, productName, productQuantity);
+            shop.addToStock(stockName, productName, productQuantity, productType, productExpirationDays);
         }
 
         // Confirmation
