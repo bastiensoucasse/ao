@@ -113,6 +113,19 @@ public class Stock {
         return true;
     }
 
+    public String toJson() {
+        String json = "{";
+        json += "\"name\":\"" + name + "\",";
+        json += "\"address\":\"" + address + "\",";
+        json += "\"products\":[";
+        for (Product product : products)
+            json += product.toJson() + ",";
+        json = json.substring(0, json.length() - 1);
+        json += "]";
+        json += "}";
+        return json;
+    }
+
     @Override
     public String toString() {
         return "Stock [name=" + name + ", address=" + address + ", products=" + products + "]";

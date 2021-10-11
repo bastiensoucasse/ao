@@ -22,6 +22,10 @@ public abstract class Product {
         this("", 0);
     }
 
+    public long getID() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
@@ -58,6 +62,8 @@ public abstract class Product {
             return false;
         return true;
     }
+
+    public abstract String toJson();
 
     @Override
     public String toString() {
