@@ -1,25 +1,31 @@
 import java.util.Iterator;
 import java.util.Vector;
 
+import json.Json;
+import json.JsonArray;
+import json.JsonObject;
+
 /**
  * A stock of products associated with a name and address.
  * 
  * @author Iantsa Provost
  * @author Bastien Soucasse
  */
-public class Stock {
+public class Stock extends Vector<Product> {
     private final String name;
     private final String address;
     private final Vector<Product> products;
+
+    public Stock(final String name, final String address, final Vector<Product> products) {
+        this.name = name;
+        this.address = address;
+        this.products = products;
+    }
 
     public Stock(final String name, final String address) {
         this.name = name;
         this.address = address;
         this.products = new Vector<>();
-    }
-
-    public Stock() {
-        this("", "");
     }
 
     public String getName() {
@@ -113,21 +119,15 @@ public class Stock {
         return true;
     }
 
-    public String toJson() {
-        String json = "{";
-        json += "\"name\":\"" + name + "\",";
-        json += "\"address\":\"" + address + "\",";
-        json += "\"products\":[";
-        for (Product product : products)
-            json += product.toJson() + ",";
-        json = json.substring(0, json.length() - 1);
-        json += "]";
-        json += "}";
-        return json;
+    public JsonObject toJson() {
+        final JsonArray productsJson = Json.array();
+        for (final Product product : products)
+            productsJson.add(product.toJson());
+        return Json.object().add("name", name).add("address", address).add("products", productsJson);
     }
 
     @Override
     public String toString() {
-        return "Stock [name=" + name + ", address=" + address + ", products=" + products + "]";
+        return name + " {address=" + address + ", products=" + products + "}";
     }
 }

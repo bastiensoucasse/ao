@@ -8,7 +8,7 @@ import java.util.Vector;
  * @author Iantsa Provost
  * @author Bastien Soucasse
  */
-public class MyShop {
+public class MyShop extends Vector<Stock> {
     private final Vector<Stock> stocks;
 
     public MyShop() {
@@ -84,6 +84,17 @@ public class MyShop {
      * @return {@code true} if this set did not already contain the specified
      *         element; {@code false} otherwise.
      */
+    public boolean add(final Stock stock) {
+        return stocks.add(stock);
+    }
+
+    /**
+     * Adds a stock to the shop.
+     * 
+     * @param stock the stock object to add.
+     * @return {@code true} if this set did not already contain the specified
+     *         element; {@code false} otherwise.
+     */
     public boolean add(final String name, final String address) {
         return stocks.add(new Stock(name, address));
     }
@@ -109,6 +120,6 @@ public class MyShop {
 
     @Override
     public String toString() {
-        return "MyShop [stocks=" + stocks + "]";
+        return "MyShop: " + stocks;
     }
 }

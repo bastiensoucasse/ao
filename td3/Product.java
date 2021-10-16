@@ -1,3 +1,5 @@
+import json.JsonObject;
+
 /**
  * A product caracterised by a name and a quantity.
  * 
@@ -16,10 +18,6 @@ public abstract class Product {
         this.name = name;
         this.quantity = quantity;
         n++;
-    }
-
-    public Product() {
-        this("", 0);
     }
 
     public long getID() {
@@ -63,10 +61,10 @@ public abstract class Product {
         return true;
     }
 
-    public abstract String toJson();
+    public abstract JsonObject toJson();
 
     @Override
     public String toString() {
-        return "Product [id=" + id + ", name=" + name + ", quantity=" + quantity + "]";
+        return name + "{#" + id + ", quantity=" + quantity + "}";
     }
 }

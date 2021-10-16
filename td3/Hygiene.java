@@ -1,3 +1,6 @@
+import json.Json;
+import json.JsonObject;
+
 /**
  * A hygiene product.
  * 
@@ -5,8 +8,7 @@
  * @author Bastien Soucasse
  */
 public class Hygiene extends Product {
-
-    public Hygiene(String name, int quantity) {
+    public Hygiene(final String name, final int quantity) {
         super(name, quantity);
     }
 
@@ -15,18 +17,12 @@ public class Hygiene extends Product {
      * 
      * @return string that represents the object
      */
-    public String toJson() {
-        String json = "{";
-        json += "\"type\": \"hygiene\"";
-        json += "\"id\":\"" + this.getID() + "\",";
-        json += "\"name\":\"" + this.getName() + "\",";
-        json += "\"quantity\":\"" + this.getQuantity() + "\",";
-        json += "}";
-        return json;
+    public JsonObject toJson() {
+        return Json.object().add("type", "hygiene").add("name", getName()).add("quantity", getQuantity());
     }
 
     @Override
     public String toString() {
-        return super.toString() + " Hygiene []";
+        return getName() + " (hygiene) {#" + getID() + ", quantity=" + getQuantity() + "}";
     }
 }

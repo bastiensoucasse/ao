@@ -1,5 +1,8 @@
 import java.util.Date;
 
+import json.Json;
+import json.JsonObject;
+
 /**
  * A food product with an expiration date.
  * 
@@ -7,7 +10,6 @@ import java.util.Date;
  * @author Bastien Soucasse
  */
 public class Food extends Product {
-
     private final Date expirationDate;
 
     public Food(final String name, final int quantity, final Date expirationDate) {
@@ -30,20 +32,14 @@ public class Food extends Product {
      * 
      * @return string that represents the object
      */
-    public String toJson() {
-        String json = "{";
-        json += "\"type\": \"food\",";
-        json += "\"id\":\"" + this.getID() + "\",";
-        json += "\"name\":\"" + this.getName() + "\",";
-        json += "\"quantity\":\"" + this.getQuantity() + "\",";
-        json += "\"expirationDate\":\"" + expirationDate.toString() + "\"";
-        json += "}";
-        return json;
+    public JsonObject toJson() {
+        return Json.object().add("type", "food").add("name", getName()).add("quantity", getQuantity())
+                .add("expirationDate", expirationDate.getTime());
     }
 
     @Override
     public String toString() {
-        return super.toString() + " Food [expirationDate=" + expirationDate + "]";
+        return getName() + " (food) {#" + getID() + ", quantity=" + getQuantity() + ", expirationDate=" + expirationDate
+                + "}";
     }
-
 }

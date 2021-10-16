@@ -12,6 +12,6 @@ public class Hygiene extends Product {
 
     @Override
     public String toString() {
-        return super.toString() + " Hygiene []";
+        return super + " Hygiene []";
     }
 }

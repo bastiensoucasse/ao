@@ -237,6 +237,7 @@ public class MyAppli {
                 System.out.println("2. Display a product characteristics");
                 System.out.println("3. Add/remove a quantity of product to a stock");
                 System.out.println("4. Save stocks");
+                System.out.println("5. Load stocks");
                 System.out.println("0. Exit");
                 System.out.print("Enter an option: ");
 
@@ -256,7 +257,13 @@ public class MyAppli {
                         changeQuantity();
                         break;
                     case 4:
-                        Saver.save(shop);
+                        Saver.saveAll(shop);
+                        break;
+                    case 5:
+                        Loader.loadAll(shop);
+                        break;
+                    case 6:
+                        System.out.println(shop);
                         break;
                     default:
                         System.out.println("Invalid option, try again!");
