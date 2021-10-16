@@ -5,6 +5,7 @@ abstract class SoldatAbstrait implements Soldat {
         this.vie = vie;
     }
 
+    @Override
     public boolean parer(final int force) {
         vie = (vie > force) ? vie - force : 0;
         return vie > 0;
