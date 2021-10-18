@@ -12,6 +12,7 @@ public class Fantassin extends SoldatAbstrait {
 
     @Override
     public int frapper() {
+        System.out.println(this + " frappe de " + FORCE_FANTASSIN + ".");
         return FORCE_FANTASSIN;
     }
 }

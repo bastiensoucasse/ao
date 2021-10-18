@@ -12,6 +12,7 @@ public class Cavalier extends SoldatAbstrait {
 
     @Override
     public int frapper() {
+        System.out.println(this + " frappe de " + FORCE_CAVALIER + ".");
         return FORCE_CAVALIER;
     }
 }

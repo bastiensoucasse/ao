@@ -1,5 +1,5 @@
 public abstract class SoldatDécoré extends SoldatAbstrait {
-    private final Soldat soldat;
+    protected final Soldat soldat;
 
     SoldatDécoré(final int vie, final Soldat soldat) {
         super(vie);

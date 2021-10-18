@@ -7,6 +7,7 @@ public class SoldatAvecEpée extends SoldatDécoré {
 
     @Override
     public int frapper() {
+        System.out.println(soldat + " frappe de " + SWORD_STRENGTH * force() + ".");
         return SWORD_STRENGTH * force();
     }
 }
