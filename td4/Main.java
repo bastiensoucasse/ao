@@ -1,9 +1,9 @@
 public class Main {
     public static void main(final String[] args) {
         final Soldat c = new Cavalier(100);
-        final SoldatDécoré ce = new SoldatAvecEpée(100, c);
+        final SoldatDécoré ce = new SoldatAvecEpée(0, c);
         final Soldat f = new Fantassin(50);
-        final SoldatDécoré fb = new SoldatAvecBouclier(50, f);
+        final SoldatDécoré fb = new SoldatAvecBouclier(0, f);
 
         while (true)
         {
