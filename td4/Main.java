@@ -1,10 +1,15 @@
 public class Main {
     public static void main(final String[] args) {
-        final SoldierDecorator knight = new SoldierWithSword(new Knight(100));
-        final SoldierDecorator fantassin = new SoldierWithShield(new Fantassin(100));
+        // Initialize the fight
+        final Soldier knight = new SoldierWithShield(new Knight(100));
+        final Soldier infantryman = new SoldierWithSword(new Infantryman(100));
 
+        // Simulate the fight
+        int round = 0;
         while (true) {
-            if (!knight.wardOff(fantassin.hit()) || !fantassin.wardOff(knight.hit()))
+            round++;
+            System.out.println("--- Round: #" + round + " ---");
+            if (!knight.wardOff(infantryman.hit()) || !infantryman.wardOff(knight.hit()))
                 break;
         }
     }
