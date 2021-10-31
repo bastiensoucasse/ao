@@ -1,5 +1,5 @@
 public abstract class SoldierDecorator implements Soldier {
-    private Soldier soldier;
+    private final Soldier soldier;
 
     SoldierDecorator(final Soldier soldier) {
         this.soldier = soldier;
@@ -11,9 +11,8 @@ public abstract class SoldierDecorator implements Soldier {
     }
 
     @Override
-    public void setLife(int life) {
+    public void setLife(final int life) {
         soldier.setLife(life);
-
     }
 
     @Override

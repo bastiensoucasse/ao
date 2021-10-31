@@ -4,11 +4,11 @@ import java.util.Set;
 public class SoldierProxy implements Soldier {
     private Soldier soldier;
 
-    private Set<Weapons> weapons;
+    private boolean hasShield = false;
+    private final Set<Weapon> weapons = new HashSet<>();
 
     public SoldierProxy(final Soldier soldier) {
         this.soldier = soldier;
-        this.weapons = new HashSet<>();
         System.out.println(soldier + " has now joined the fight.");
     }
 
@@ -42,26 +42,26 @@ public class SoldierProxy implements Soldier {
         return soldier.toString();
     }
 
-    public boolean addWeapon(final Weapons weapon) {
+    public boolean addShield() {
+        if (hasShield) {
+            System.err.println("Could not equip " + this + " with second SHIELD.");
+            return false;
+        }
+
+        soldier = new SoldierWithShield(soldier);
+
+        hasShield = true;
+        System.out.println(this + " is now equipped with SHIELD.");
+        return true;
+    }
+
+    public boolean addWeapon(final Weapon weapon) {
         if (weapons.contains(weapon)) {
             System.err.println("Could not equip " + this + " with second " + weapon + ".");
             return false;
         }
 
-        switch (weapon) {
-        case SHIELD:
-            soldier = new SoldierWithShield(soldier);
-            break;
-        case SWORD:
-            soldier = new SoldierWithSword(soldier);
-            break;
-        case BOW:
-            soldier = new SoldierWithBow(soldier);
-            break;
-        default:
-            System.err.println("Unkown weapon: " + weapon + ".");
-            return false;
-        }
+        soldier = new SoldierWithWeapon(soldier, weapon);
 
         weapons.add(weapon);
         System.out.println(this + " is now equipped with " + weapon + ".");

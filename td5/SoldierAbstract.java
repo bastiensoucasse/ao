@@ -1,5 +1,5 @@
 public abstract class SoldierAbstract implements Soldier {
-    private String name;
+    private final String name;
     private int life;
 
     SoldierAbstract(final String name, final int life) {

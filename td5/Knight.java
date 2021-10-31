@@ -1,7 +1,7 @@
 public class Knight extends SoldierAbstract {
     private static final int KNIGHT_STRENGTH = 3;
 
-    Knight(final String name,final int vie) {
+    Knight(final String name, final int vie) {
         super(name, vie);
     }
 
