@@ -31,6 +31,16 @@ public abstract class SoldierDecorator implements Soldier {
     }
 
     @Override
+    public boolean addShield() {
+        return false;
+    }
+
+    @Override
+    public boolean addWeapon(final Weapon weapon) {
+        return false;
+    }
+
+    @Override
     public String toString() {
         return soldier.toString();
     }

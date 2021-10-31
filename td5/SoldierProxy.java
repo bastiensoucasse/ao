@@ -42,6 +42,7 @@ public class SoldierProxy implements Soldier {
         return soldier.toString();
     }
 
+    @Override
     public boolean addShield() {
         if (hasShield) {
             System.err.println("Could not equip " + this + " with second SHIELD.");
@@ -55,6 +56,7 @@ public class SoldierProxy implements Soldier {
         return true;
     }
 
+    @Override
     public boolean addWeapon(final Weapon weapon) {
         if (weapons.contains(weapon)) {
             System.err.println("Could not equip " + this + " with second " + weapon + ".");
