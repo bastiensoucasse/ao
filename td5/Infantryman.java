@@ -1,12 +1,12 @@
 public class Infantryman extends SoldierAbstract {
     private static final int INFANTRYMAN_STRENGTH = 2;
 
-    Infantryman(final String name, final int vie) {
-        super(name, vie);
+    Infantryman(final String name, final int life) {
+        super(name, life);
     }
 
-    Infantryman(final int vie) {
-        this("Infantryman", vie);
+    Infantryman(final int life) {
+        this("Infantryman", life);
     }
 
     @Override

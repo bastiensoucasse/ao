@@ -1,12 +1,12 @@
 public class Knight extends SoldierAbstract {
     private static final int KNIGHT_STRENGTH = 3;
 
-    Knight(final String name, final int vie) {
-        super(name, vie);
+    Knight(final String name, final int life) {
+        super(name, life);
     }
 
-    Knight(final int vie) {
-        this("Knight", vie);
+    Knight(final int life) {
+        this("Knight", life);
     }
 
     @Override
