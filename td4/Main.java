@@ -1,13 +1,10 @@
 public class Main {
     public static void main(final String[] args) {
-        final Soldat c = new Cavalier(100);
-        final SoldatDécoré ce = new SoldatAvecEpée(0, c);
-        final Soldat f = new Fantassin(50);
-        final SoldatDécoré fb = new SoldatAvecBouclier(0, f);
+        final SoldierDecorator knight = new SoldierWithSword(new Knight(100));
+        final SoldierDecorator fantassin = new SoldierWithShield(new Fantassin(100));
 
-        while (true)
-        {
-            if (!fb.parer(ce.frapper()) || !ce.parer(fb.frapper()))
+        while (true) {
+            if (!knight.wardOff(fantassin.hit()) || !fantassin.wardOff(knight.hit()))
                 break;
         }
     }
