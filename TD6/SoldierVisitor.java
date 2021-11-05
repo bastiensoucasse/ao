@@ -1,5 +1,5 @@
 public interface SoldierVisitor {
-    void visit(Soldier soldier);
+    public void visit(Soldier soldier);
 
-    void visitSoldier(Soldier soldier);
+    public void visitSoldier(Soldier soldier);
 }

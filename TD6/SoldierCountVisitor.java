@@ -1,14 +1,20 @@
 public class SoldierCountVisitor implements SoldierVisitor {
-    private int count;
+    private int knights;
+    private int infantrymen;
 
     @Override
     public void visit(final Soldier soldier) {
-        count++;
+        if (soldier instanceof Knight)
+            knights++;
+        if (soldier instanceof Infantryman)
+            infantrymen++;
     }
 
+    @Override
     public void visitSoldier(final Soldier soldier) {
-        count = 0;
+        knights = 0;
+        infantrymen = 0;
         soldier.accept(this);
-        System.out.println("All " + count + " soldiers are ready for the fight.");
+        System.out.println("All " + knights + " knights and " + infantrymen + " infantrymen are ready for the fight.");
     }
 }

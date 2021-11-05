@@ -4,6 +4,7 @@ public class SoldierPrintVisitor implements SoldierVisitor {
         System.out.println(soldier + " is ready.");
     }
 
+    @Override
     public void visitSoldier(final Soldier soldier) {
         soldier.accept(this);
     }
